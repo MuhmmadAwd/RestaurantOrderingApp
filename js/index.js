@@ -6,7 +6,6 @@ import {
     v4 as uuidv4
 } from 'https://jspm.dev/uuid';
 
-let invoiceEl = null;
 let ordersArray = []
 let number = 1;
 
@@ -14,7 +13,6 @@ function init() {
     renderMenuHtml()
 
     const mainEl = document.querySelector("main");
-    invoiceEl = document.querySelector(".invoice");
 
     mainEl.addEventListener("click", handleCLick)
 }
@@ -46,6 +44,7 @@ function generateMenuItemHtml() {
 
 function handleCLick(e) {
     const targetData = e.target.dataset
+    const invoiceEl = document.querySelector(".invoice");
 
     if (targetData.add || targetData.remove) {
         const orderName = e.target.parentElement.querySelector(".menu-item__name").textContent;
