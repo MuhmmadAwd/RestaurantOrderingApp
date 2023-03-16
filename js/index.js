@@ -46,17 +46,28 @@ function generateMenuItemHtml() {
 
 function handleCLick(e) {
     const targetData = e.target.dataset
-    const orderName = e.target.parentElement.querySelector(".menu-item__name").textContent;
-    const orderPrice = e.target.parentElement.querySelector(".menu-item__price").textContent;
 
-    if (targetData.add) {
-        addOrderToInvoice(orderName, orderPrice)
-    } else if (targetData.remove && ordersArray.length > 0) {
-        removeOrderFromInvoice(orderName, orderPrice)
+    if (targetData.add || targetData.remove) {
+        const orderName = e.target.parentElement.querySelector(".menu-item__name").textContent;
+        const orderPrice = e.target.parentElement.querySelector(".menu-item__price").textContent;
+        if (targetData.add) {
+            addOrderToInvoice(orderName, orderPrice)
+        } else if (targetData.remove && ordersArray.length > 0) {
+            removeOrderFromInvoice(orderName, orderPrice)
+        }
+        invoiceEl.style.display = (ordersArray.length > 0) ? "grid" : "none"
+        renderInvoiceOrders()
     }
 
-    invoiceEl.style.display = (ordersArray.length > 0) ? "grid" : "none"
-    renderInvoiceOrders()
+
+    if (targetData.complete) {
+        document.querySelector(".modal").style.display = "grid"
+    } else if (targetData.pay) {
+        e.preventDefault()
+        document.querySelector(".modal").style.display = "none"
+        invoiceEl.innerHTML = "<h2> 😂💔محلكم الصغير. تعالو كل يوم</h2>"
+    }
+
 }
 
 function addOrderToInvoice(name, price) {

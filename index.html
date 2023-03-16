@@ -28,15 +28,15 @@
                 <div class="invoice__orders">
                 </div>
 
-                <button type="button" class="btn btn-submit">Complete order</button>
+                <button type="button" class="btn btn-submit" data-complete="complete">Complete order</button>
             </section>
             <section class="modal">
                 <h3 class="modal-title">Enter card details</h3>
-                <form action="">
-                    <input required type="text" class="name">
-                    <input required type="number" class="card-number">
-                    <input required type="number" class="cvv-number">
-                    <button type="submit" class="btn btn-submit">Pay</button>
+                <form>
+                    <input required type="text" class="name" placeholder="enter your name">
+                    <input required type="number" placeholder="enter your card number" class="card-number">
+                    <input required type="number" placeholder="enter your cvv" class="cvv-number">
+                    <button data-pay="pay" type="submit" class="btn btn-submit">Pay</button>
                 </form>
             </section>
         </main>

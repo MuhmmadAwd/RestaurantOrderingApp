@@ -97,7 +97,8 @@ header {
 
 /* invoice */
 .invoice {
-    display: none
+    display: none;
+    text-align: center;
 }
 
 .invoice__title {
